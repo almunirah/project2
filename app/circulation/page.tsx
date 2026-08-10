@@ -1,2 +1,2 @@
-import {LibraryDashboard} from '@/components/library-dashboard';
-export default function Page(){return <div data-module-shell="circulation"><LibraryDashboard initialModule="circulation"/></div>}
+import {ColorDashboard} from '@/components/color-dashboard';
+export default function Page(){return <ColorDashboard initial="circulation"/>}

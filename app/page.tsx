@@ -1,2 +1,2 @@
-import {Dashboard} from "@/components/dashboard";
-export default function Page(){return <Dashboard/>}
+import {LibraryDashboard} from '@/components/library-dashboard';
+export default function Page(){return <LibraryDashboard initialModule="overview"/>}

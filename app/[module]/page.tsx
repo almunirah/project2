@@ -1,3 +1,6 @@
-import Link from "next/link";
-const titles:Record<string,string>={collection:"Collection",circulation:"Circulation",users:"Users",acquisition:"Acquisition",cataloguing:"Cataloguing","digital-repository":"Digital Repository",services:"Services",programmes:"Programmes","staff-productivity":"Staff Productivity",kpi:"Reports & KPI",alerts:"Alerts",settings:"Settings"};
-export default async function ModulePage({params}:{params:Promise<{module:string}>}){const {module}=await params;const title=titles[module]??module.replaceAll("-"," ");return <main className="min-h-screen p-6 md:p-10"><div className="mx-auto max-w-5xl"><Link href="/" className="text-sm" style={{color:"var(--accent)"}}>← Dashboard</Link><div className="panel mt-5 rounded-2xl p-8"><div className="text-sm muted">Library Intelligence / Module</div><h1 className="mt-2 text-3xl font-semibold capitalize">{title}</h1><p className="mt-3 max-w-2xl muted">This route is prepared for modular expansion. The Executive Dashboard is the first production milestone; detailed operational workflows will be connected here next.</p><div className="mt-7 grid gap-4 md:grid-cols-3">{["Analytics overview","Operational queue","Data table & drill-down"].map((x,i)=><div className="rounded-xl border p-5" style={{borderColor:"var(--border)"}} key={x}><div className="text-sm muted">Workspace {i+1}</div><div className="mt-2 font-medium">{x}</div><div className="mt-5 h-2 rounded-full" style={{background:"var(--panel2)"}}><div className="h-2 rounded-full" style={{width:`${55+i*13}%`,background:"var(--accent)"}}/></div></div>)}</div></div></div></main>}
+import {LibraryDashboard} from '@/components/library-dashboard';
+const valid=['collection','circulation','acquisition-cataloguing','digital-kpi'];
+export default async function ModulePage({params}:{params:Promise<{module:string}>}){
+ const {module}=await params;
+ return <LibraryDashboard initialModule={valid.includes(module)?module:'overview'}/>;
+}
